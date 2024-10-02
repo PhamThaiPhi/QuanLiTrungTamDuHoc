@@ -1,0 +1,88 @@
+﻿@model IEnumerable<quanlytrungtam.Models.NHANVIEN>
+
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Layouts/AdminLayout.cshtml";
+}
+
+<h2>add</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HOTEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYSINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIOITINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIACHI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAIKHOAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MATKHAU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CHUCVU.TENCV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QUYEN.TENQUYEN)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOTEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYSINH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIOITINH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIACHI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAIKHOAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MATKHAU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CHUCVU.TENCV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QUYEN.TENQUYEN)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MANV }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MANV }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MANV })
+        </td>
+    </tr>
+}
+
+</table>

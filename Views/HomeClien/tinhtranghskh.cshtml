@@ -1,0 +1,239 @@
+﻿@model quanlytrungtam.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "tinhtranghskh";
+    Layout = "~/Views/Layouts/HomeLayout.cshtml";
+    var db = new quanlytrungtam.Models.QUANLYTRUNGTAMDUHOCEntities1();
+    var kh = db.KHACHHANG.SingleOrDefault(n => n.MAKH == Model.MAKH);
+    //var hsvs = db.HOSOVISAs.SingleOrDefault(n => n.MAHSV == Model.MA);
+
+}
+
+<div class="container pt-5 pb-5">
+    @if (kh != null)
+    {
+        var hskh = db.HOSOKHACHHANG.FirstOrDefault(n => n.MAKH == kh.MAKH);
+        var hsvs = db.HOSOVISA.FirstOrDefault(n => n.MAKH == kh.MAKH);
+
+        if (hskh != null)
+        {
+
+            var lotrinh = db.LOTRINHDUHOC.SingleOrDefault(n => n.MALT == hskh.MALT);
+            var tdh = db.TRUONGDAIHOC.SingleOrDefault(n => n.MANUOC == lotrinh.MATDH);
+            if (hskh.TRANGTHAIHS == "Đã duyệt")
+            {
+                hskh.HOCPHI = lotrinh != null ? (int)lotrinh.CHIPHI : (int?)null;
+            <h2 class="pt-5">Tình trạng hồ sơ: <strong>@hskh.TRANGTHAIHS</strong></h2>
+            <p># Thông tin khách hàng</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Sdt</th>
+                        <th>Ngày Sinh</th>
+                        <th>Email</th>
+                        <th>Tiền Phí</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@kh.HOTEN</td>
+                        <td>@kh.GIOITINH</td>
+                        <td>@kh.DIACHI</td>
+                        <td>@kh.SDT</td>
+                        <td>@kh.NGAYSINH</td>
+                        <td>@kh.Email</td>
+                        <td>@hskh.HOCPHI</td>
+                    </tr>
+                </tbody>
+            </table>
+            }
+            if (hskh.TRANGTHAIHS == "Chưa duyệt")
+            {
+                hskh.HOCPHI = lotrinh != null ? (int)lotrinh.CHIPHI : (int?)null;
+            <h2 class="pt-5">Tình trạng hồ sơ: <strong>@hskh.TRANGTHAIHS</strong></h2>
+            <p># Thông tin khách hàng</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Sdt</th>
+                        <th>Ngày Sinh</th>
+                        <th>Email</th>
+                        <th>Tiền Phí</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@kh.HOTEN</td>
+                        <td>@kh.GIOITINH</td>
+                        <td>@kh.DIACHI</td>
+                        <td>@kh.SDT</td>
+                        <td>@kh.NGAYSINH</td>
+                        <td>@kh.Email</td>
+                        <td>@hskh.HOCPHI</td>
+                    </tr>
+                </tbody>
+            </table>
+            }
+            else if (hskh.TRANGTHAIHS == "Đã cọc")
+            {
+
+            <h2 class="pt-5">Tình trạng hồ sơ: <strong>@hskh.TRANGTHAIHS</strong></h2>
+            <p># Thông tin khách hàng</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Sdt</th>
+                        <th>Ngày Sinh</th>
+                        <th>Email</th>
+                        <th>Tiền Phí</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@kh.HOTEN</td>
+                        <td>@kh.GIOITINH</td>
+                        <td>@kh.DIACHI</td>
+                        <td>@kh.SDT</td>
+                        <td>@kh.NGAYSINH</td>
+                        <td>@kh.Email</td>
+                        <td>@hskh.HOCPHI</td>
+                    </tr>
+                </tbody>
+            </table>
+            }
+            else if (hskh.TRANGTHAIHS == "HOÀN TẤT HỒ SƠ") { 
+               
+            <h2 class="pt-5">Tình trạng hồ sơ: <strong style="color:forestgreen">@hskh.TRANGTHAIHS</strong></h2>
+            <p># Thông tin khách hàng</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Sdt</th>
+                        <th>Ngày Sinh</th>
+                        <th>Email</th>
+                        <th>Tiền Phí</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@kh.HOTEN</td>
+                        <td>@kh.GIOITINH</td>
+                        <td>@kh.DIACHI</td>
+                        <td>@kh.SDT</td>
+                        <td>@kh.NGAYSINH</td>
+                        <td>@kh.Email</td>
+                        <td>@hskh.HOCPHI</td>
+                    </tr>
+                </tbody>
+            </table>
+            }
+            <p># Lộ trình đăng ký</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Lộ trình</th>
+                        <th>Mô tả Lộ trình</th>
+                        <th>Thời gian học</th>
+                        <th>Chi Phí</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@lotrinh.TENLT</td>
+                        <td>@lotrinh.MOTALT</td>
+                        <td>@lotrinh.THOIGIANHOC năm</td>
+                        <td>@lotrinh.CHIPHI</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered pt-3">
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Tên Trường</th>
+                        <th>Địa Chỉ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img width="90px" height="90px" src="@Url.Content("~/Content/images/" + lotrinh.TRUONGDAIHOC.ANH)">
+                        </td>
+                        <td>@lotrinh.TRUONGDAIHOC.TENTDH</td>
+                        <td>@lotrinh.TRUONGDAIHOC.DIACHI</td>
+                    </tr>
+                </tbody>
+            </table>
+            if (hskh.TRANGTHAIHS == "Đã duyệt")
+            {
+               
+                
+                    <div class="width:100%; text-end">
+                        <form method="post" action="@Url.Action("thanhtoan", "HomeClien", new { id = kh.MAKH })">
+                            <button type="submit" name="btnCocTien" class="btn btn-success">Cọc tiền</button>
+                        </form>
+                    </div>
+                
+            }
+            
+            else if (hskh.TRANGTHAIHS == "Đã cọc")
+                {
+                    if (hsvs == null)
+                    { 
+                            <div class="width:100%; text-end">
+                                <a href="@Url.Action("nopvisa", "HomeClien", new { id = kh.MAKH })">
+                                    <button type="button" class="btn btn-success">Nộp Visa</button>
+                                </a>
+                            </div>
+                    }
+                    else if (hsvs != null && hsvs.TRANGTHAIHS == "Chưa duyệt" )
+                    {
+                        <p style="float:right; font-size:20px;" class="text-danger"> Hồ sơ Visa đang chờ duyệt</p> 
+                    }
+                    else if (hsvs != null && hsvs.TRANGTHAIHS == "Đã duyệt")
+                    {
+                               <div class="width:100%; text-end">
+                                   <form method="post" action="@Url.Action("thanhtoan", "HomeClien", new { id = kh.MAKH })">
+                                       <!-- Trong phần HTML -->
+                                       <button type="submit" name="btnCocTienall" class="btn btn-success" onclick="confirmCocTienAll()">THANH TOÁN</button>
+                                   </form>
+                                </div> 
+                    }
+
+
+                    }
+        }
+            else
+            {
+                <h2 class="pt-5">Khách hàng không có hồ sơ</h2>
+            }
+    }
+            else
+            {
+                <h2 class="pt-5">Không tìm thấy khách hàng</h2>
+            }
+</div>
+<!-- Trong phần JavaScript (script.js hoặc nhúng trực tiếp trong trang HTML) -->
+<script>
+    function confirmCocTienAll() {
+        var confirmation = confirm("Bạn chắc chắn muốn thanh toán hết ?");
+        if (confirmation) {
+            // Nếu người dùng chọn OK, thực hiện hành động cọc tiền ở đây
+            document.forms["yourFormName"].submit(); // Thay "yourFormName" bằng tên của form của bạn
+        } else {
+            // Nếu người dùng chọn Cancel, không thực hiện hành động gì cả
+        }
+    }
+</script>

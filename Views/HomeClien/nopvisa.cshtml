@@ -1,0 +1,75 @@
+﻿@model quanlytrungtam.Models.VisaHoSo
+
+
+@{
+    ViewBag.Title = "nopvisa";
+    Layout = "~/Views/Layouts/HomeLayout.cshtml";
+}
+@{
+    var db = new quanlytrungtam.Models.QUANLYTRUNGTAMDUHOCEntities1();
+    var ltdh = db.LOTRINHDUHOC.OrderBy(n => n.MALT);
+}
+<link rel="stylesheet" href="~/Content/css/inputfile.css">
+<section class="py-5">
+    <div class="container text-center pt-5">
+        <h3 class="title" style="font-size: 35px; font-weight: bold;text-align: center;">Nộp Hồ sơ Visa</h3>
+        <p style="text-align: center;margin-bottom: 1.5em;font-size: 19px;">Các tư vấn viên của <strong> Việt Đỉnh</strong> sẽ chủ động giới thiệu học <br> bổng phù hợp từ <strong>30 - 100%</strong>  học phí cho các bạn đến <br> làm hồ sơ tại <strong> Việt Đỉnh</strong></p>
+        @using (Html.BeginForm("nopvisa", "HomeClien", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+
+                <div class="col">
+                    <div class="p-2">
+                        <div class="input-group mb-3">
+                            @Html.EditorFor(model => model.HOSOVISA.NGAYNOPHS, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ngày Nộp Hồ Sơ", @aria_label = "Sizing example input", @aria_describedby = "inputGroup-sizing-default", Type = "date" } })
+                            @Html.ValidationMessageFor(model => model.HOSOVISA.NGAYNOPHS, "", new { @class = "text-danger" })
+                        </div>
+
+                        @*<div class="input-group mb-3">
+                            @Html.TextBoxFor(m => m.HOSOVISA.TRANGTHAIHS, new { @class = "form-control", @placeholder = "Chưa duyệt", @aria_label = "Sizing example input", @aria_describedby = "inputGroup-sizing-default"})
+                            @Html.ValidationMessageFor(model => model.HOSOVISA.TRANGTHAIHS, "", new { @class = "text-danger" })
+                        </div>*@
+                    </div>
+
+                </div>
+
+                <div class="col">
+
+                    <div class="p-2">
+                        <div class="input-group mb-3" style="margin-top: -22px;">
+                            @Html.TextBoxFor(m => m.HOSOVISA.GHICHU, new { @class = "form-control", @placeholder = "Ghi Chú", @aria_label = "Sizing example input", @aria_describedby = "inputGroup-sizing-default" })
+                            @Html.ValidationMessageFor(model => model.HOSOVISA.GHICHU, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-group mb-3">
+                            <div id="uploadFile">
+                                <input type="file" name="FILEHOSOVISA" id="upload-thumb" onchange="chooseFile(this)"> <br> <br>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary btn-dathen mt-3">Nộp Visa</button>
+
+        }
+    </div>
+</section>
+<script>
+    var fileInput = document.querySelector('.form-input-file');
+    var fileInputText = document.querySelector('.form-input--file-text');
+    fileInputTextContent = fileInputText.textContent;
+
+    fileInput.addEventListener('change', function (e) {
+        var value = e.target.value.length > 0 ? e.target.value : fileInputTextContent;
+
+        fileInputText.textContent = value.replace('C:\\fakepath\\', '');
+    });
+</script>
+
+

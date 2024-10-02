@@ -1,0 +1,86 @@
+﻿@using quanlytrungtam.Models;
+@model HOSOVISA
+@{
+    ViewBag.Title = "duyethsvs";
+    Layout = "~/Views/Layouts/AdminLayout.cshtml";
+}
+
+<div id="content" class="container-fluid">
+    <div class="card">
+        <div class="card-header font-weight-bold">
+            Duyệt Hồ sơ Visa
+        </div>
+
+
+
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                { IEnumerable<VisaHoSo> hosovs = (IEnumerable<VisaHoSo>)ViewBag.hosovs; }
+                @Html.AntiForgeryToken()
+                @Html.Hidden("MAHSV", Model.MAHSV)
+                <div class="row">
+                    <div class="col-lg-6">
+                        @*<div class="form-group">
+                            <label for="content">Mã Hồ sơ</label>
+                            <input class="form-control" type="text" disabled value=" @Model.MAHS">
+                        </div>*@
+                        <div class="form-group">
+                            <label for="content">Ngày nộp hồ sơ</label>
+                            <input class="form-control" type="text" disabled value=" @Model.NGAYNOPHS.Value.ToString("dd/mm/yyyy")">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Ghi chú</label>
+                            <input class="form-control" type="text" disabled value="@Model.GHICHU">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="content">Họ Tên Khách Hàng</label>
+                            @*<input class="form-control" type="number" name="name" max="40" id="name">*@
+                            <input class="form-control" type="text" disabled value="@Model.KHACHHANG.HOTEN">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Ngày Sinh</label>
+                            <input class="form-control" type="text" disabled value="@Model.KHACHHANG.NGAYSINH">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Giới tính</label>
+                            <input class="form-control" type="text" disabled value="@Model.KHACHHANG.GIOITINH">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Địa Chỉ</label>
+                            <input class="form-control" type="text" disabled value="@Model.KHACHHANG.DIACHI">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Số điện thoại</label>
+                            <input class="form-control" type="text" disabled value="@Model.KHACHHANG.SDT">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Email</label>
+                            <input class="form-control" type="text" disabled name="Email" value="@Model.KHACHHANG.Email">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="">Trạng Thái Hồ sơ</label>
+                    <select class="form-control" name="TRANGTHAIHS" id="">
+
+                        <option value="Chưa duyệt" @(Model.TRANGTHAIHS == "Chưa duyệt" ? "selected='selected'" : "")>Chưa Duyệt</option>
+
+                        <option value="Đã duyệt" @(Model.TRANGTHAIHS == "Đã duyệt" ? "selected='selected'" : "")>Duyệt</option>
+
+                    </select>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Trạng Thái Hồ sơ Visa</button>
+            }
+        </div>
+    </div>
+</div>
+

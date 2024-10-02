@@ -1,0 +1,52 @@
+﻿@model quanlytrungtam.Models.HOSOVISA
+@{
+    ViewBag.Title = "editHoso";
+    Layout = "~/Views/Layouts/AdminLayout.cshtml";
+}
+
+<div id="content" class="container-fluid">
+    <div class="card">
+        <div class="card-header font-weight-bold">
+            Chỉnh sửa thông tin hồ sơ ViSa
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("editHoso", "QuanLyHoSoVS"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("MAHSV", Model.MAHSV)
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MAKH, "Mã Khách hàng")
+                        @Html.TextBoxFor(model => model.MAKH, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NGAYNOPHS, "Ngày Nộp hồ sơ")
+                        @Html.TextBoxFor(model => model.NGAYNOPHS, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FILEHOSOVISA, "File hồ sơ visa")
+                        @Html.TextBoxFor(model => model.FILEHOSOVISA, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TRANGTHAIHS, "Trạng thái hồ sơ")
+                        @Html.TextBoxFor(model => model.TRANGTHAIHS, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GHICHU, "Ghi chú")
+                        @Html.TextBoxFor(model => model.GHICHU, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+                <button type="submit" class="btn btn-primary">Cập Nhật</button>
+            }
+        </div>
+    </div>
+</div>
+
+

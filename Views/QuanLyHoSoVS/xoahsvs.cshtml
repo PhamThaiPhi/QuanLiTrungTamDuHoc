@@ -1,0 +1,69 @@
+﻿@model quanlytrungtam.Models.HOSOVISA
+@{
+    ViewBag.Title = "xoahsvs";
+    Layout = "~/Views/Layouts/AdminLayout.cshtml";
+}
+
+<div id="content" class="container-fluid">
+    <div class="card">
+        <div class="card-header font-weight-bold">
+            Chỉnh sửa thông tin hồ sơ Khách hàng
+        </div>
+
+        <div class="card-body">
+            @if (Model != null)
+            {
+                using (Html.BeginForm("xoahsvs", "QuanLyHoSoVS"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("MAHSV", Model.MAHSV)
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="content">Mã Hồ sơ Visa</label>
+                                <input class="form-control" type="text" disabled name="MAHSV" value=" @Model.MAHSV">
+                            </div>
+                            @*<div class="form-group">
+                                <label for="content">Mã Hồ sơ</label>
+                                <input class="form-control" type="text" disabled name="MAHS" value=" @Model.MAHS">
+                            </div>*@
+                            <div class="form-group">
+                                <label for="content">Mã Khách hàng</label>
+                                <input class="form-control" type="text" disabled name="MAKH" value=" @Model.MAKH">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content">Ngày Nộp hồ sơ</label>
+                                <input class="form-control" type="text" name="NGAYNOPHS" value="  @Model.NGAYNOPHS">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content">File hồ sơ visa</label>
+                                <input class="form-control" type="text" name="FILEHOSOVISA" value="@Model.FILEHOSOVISA">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content">Trạng thái hồ sơ</label>
+                                <input class="form-control" type="text" name="TRANGTHAIHS" value="  @Model.TRANGTHAIHS">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content">Ghi chú</label>
+                                <input class="form-control" type="text" name="GHICHU" value=" @Model.GHICHU">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+                }
+
+            }
+        </div>
+    </div>
+</div
